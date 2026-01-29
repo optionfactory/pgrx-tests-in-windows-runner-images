@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unattend xmlns="urn:schemas-microsoft-com:unattend">
+   <settings pass="windowsPE">
+      <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+         <SetupUILanguage>
+            <UILanguage>en-US</UILanguage>
+         </SetupUILanguage>
+         <InputLocale>it-IT</InputLocale>
+         <SystemLocale>it-IT</SystemLocale>
+         <UILanguage>en-US</UILanguage>
+         <UILanguageFallback>en-US</UILanguageFallback>
+         <UserLocale>it-IT</UserLocale>
+      </component>
+      <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+         <UserData>
+            <AcceptEula>true</AcceptEula>
+            <FullName>Administrator</FullName>
+            <Organization>OpFa</Organization>
+         </UserData>
+         <EnableFirewall>false</EnableFirewall>
+         <ImageInstall>
+            <OSImage>
+               <InstallFrom>
+                  <MetaData wcm:action="add">
+                     <Key>/IMAGE/NAME</Key>
+                     <Value>Windows Server 2022 SERVERDATACENTER</Value>
+                  </MetaData>
+               </InstallFrom>
+               <InstallToAvailablePartition>true</InstallToAvailablePartition>
+               <WillShowUI>OnError</WillShowUI>
+            </OSImage>
+         </ImageInstall>
+         <DiskConfiguration>
+            <Disk wcm:action="add">
+               <DiskID>0</DiskID>
+               <CreatePartitions>
+                  <!-- Windows partition -->
+                  <CreatePartition wcm:action="add">
+                     <Order>1</Order> 
+                     <Type>Primary</Type> 
+                     <Extend>true</Extend> 
+                  </CreatePartition>
+               </CreatePartitions>
+               <ModifyPartitions>
+                  <!-- Windows partition -->
+                  <ModifyPartition wcm:action="add">
+                     <Order>1</Order>
+                     <PartitionID>1</PartitionID>
+                     <Label>Windows</Label>
+                     <Letter>C</Letter>
+                     <Format>NTFS</Format>
+                  </ModifyPartition>
+               </ModifyPartitions>
+            </Disk>
+         </DiskConfiguration>
+      </component>
+   </settings>
+   <settings pass="offlineServicing">
+      <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-LUA-Settings" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+         <EnableLUA>false</EnableLUA>
+      </component>
+   </settings>
+   <settings pass="generalize">
+      <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Security-SPP" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+         <SkipRearm>1</SkipRearm>
+      </component>
+   </settings>
+   <settings pass="specialize">
+      <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+         <OEMInformation>
+            <HelpCustomized>false</HelpCustomized>
+         </OEMInformation>
+         <TimeZone>UTC</TimeZone>
+         <RegisteredOwner />
+      </component>
+      <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-ServerManager-SvrMgrNc" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+         <DoNotOpenServerManagerAtLogon>true</DoNotOpenServerManagerAtLogon>
+      </component>
+      <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-OutOfBoxExperience" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+         <DoNotOpenInitialConfigurationTasksAtLogon>true</DoNotOpenInitialConfigurationTasksAtLogon>
+      </component>
+      <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Security-SPP-UX" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+         <SkipAutoActivation>true</SkipAutoActivation>
+      </component>
+   </settings>
+   <settings pass="oobeSystem">
+      <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+         <AutoLogon>
+            <Password>
+               <Value>Banana4scale!</Value>
+               <PlainText>true</PlainText>
+            </Password>
+            <Enabled>true</Enabled>
+            <LogonCount>1</LogonCount>
+            <Username>Administrator</Username>
+         </AutoLogon>
+         <OOBE>
+            <HideEULAPage>true</HideEULAPage>
+            <HideLocalAccountScreen>true</HideLocalAccountScreen>
+            <HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>
+            <HideOnlineAccountScreens>true</HideOnlineAccountScreens>
+            <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
+            <NetworkLocation>Work</NetworkLocation>
+            <ProtectYourPC>2</ProtectYourPC>
+            <SkipMachineOOBE>true</SkipMachineOOBE>
+            <SkipUserOOBE>true</SkipUserOOBE>
+         </OOBE>
+         <UserAccounts>
+            <AdministratorPassword>
+               <Value>Banana4scale!</Value>
+               <PlainText>true</PlainText>
+            </AdministratorPassword>
+         </UserAccounts>
+         <FirstLogonCommands>
+            <SynchronousCommand wcm:action="add">
+               <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\setup_winrm.ps1</CommandLine>
+               <Order>21</Order>
+               <Description>Setup WinRM</Description>
+            </SynchronousCommand>
+         </FirstLogonCommands>
+      </component>
+   </settings>
+</unattend>

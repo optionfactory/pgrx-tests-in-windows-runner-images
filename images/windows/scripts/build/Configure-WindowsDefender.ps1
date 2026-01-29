@@ -20,7 +20,7 @@ $avPreference = @(
     @{PUAProtection = 0}
     @{SignatureDisableUpdateOnStartupWithoutEngine = $true}
     @{SubmitSamplesConsent = 2}
-    @{ScanAvgCPULoadFactor = 5; ExclusionPath = @("D:\", "C:\")}
+    @{ScanAvgCPULoadFactor = 5; ExclusionPath = @("C:\")}
     @{DisableRealtimeMonitoring = $true}
     @{ScanScheduleDay = 8}
 )
